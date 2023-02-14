@@ -1,0 +1,54 @@
+﻿@model Uppgift3.Models.CD
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Lägg in CD i databasen</h1>
+<br />
+<h4>Innan Du lägger in en CD-skiva, lägg in artisten</h4>
+<br />
+<p class="blockquote">För att lägga in en CD-skiva i databasen, måste Du först spara CD-skivans artist i databasen</p>
+<br/>
+<p class="bg-light blockquote"><a href="@Url.Action("Create", "Artist")" target="_blank"><b>Lägg in en artist</b></a></p>
+<br/>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtistID" class="control-label"></label>
+                <label class="control-label text-danger"><b>@ViewBag.Message</b></label>
+                <select asp-for="ArtistID" class="form-control" asp-items="ViewBag.ArtistID"></select>
+                <span asp-validation-for="ArtistID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

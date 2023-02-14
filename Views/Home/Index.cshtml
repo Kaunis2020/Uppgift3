@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Välkommen!</h1>
+    <br/>
+    <hr />
+    <br />
+    <p class="bg-light blockquote"><a href="@Url.Action("Index", "Artist")" target="_blank"><b>Se alla artister</b></a></p>
+    <br />
+    <p class="bg-light blockquote"><a href="@Url.Action("Index", "CDs")" target="_blank"><b>Se alla CD-skivor</b></a></p>
+    <br />
+    <p class="bg-light blockquote"><a href="@Url.Action("Index", "Borrower")" target="_blank"><b>Se alla låntagare</b></a></p>
+    <br />
+    <p class="bg-light blockquote"><a href="@Url.Action("Index", "Loan")" target="_blank"><b>Se samtliga lån</b></a></p>
+    <br />
+    <p class="bg-light blockquote"><a href="@Url.Action("Search", "CDs")" target="_blank"><b>Sök CD-skivor</b></a></p>
+</div>

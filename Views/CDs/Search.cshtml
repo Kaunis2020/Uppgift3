@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Search Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sök CD-skivor</h1>
+    <table id="searchtable">
+        <caption>Sök CD-skivor</caption>
+        <tr>
+            <th>Sök på artistens namn</th>
+            <th>Sök på CD-skivans titel</th>
+        </tr>
+        <tr>
+            <td>I rutan nedan sök med artistens namn</td>
+            <td>I rutan nedan sök med CD-skivans titel</td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <input type="text" id="taggs" name="taggs" placeholder=" Artist... ">
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" id="sokruta" name="sokruta" placeholder=" CD-skiva... ">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<br/>
+<hr/>
+<br />
+<div id="tabell"></div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>

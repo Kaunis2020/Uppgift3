@@ -1,0 +1,59 @@
+﻿@model Uppgift3.Models.Loan
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Låna CD-skiva under 30 dagar</h1>
+<br />
+<h4>Innan Du lånar ut CD-skivor, lägg in minst en låntagare samt önskade CD-skivor i databasen</h4>
+<br />
+<p class="blockquote">Lägg in minst en låntagare i databasen</p>
+<p class="bg-light blockquote"><a href="@Url.Action("Create", "Borrower")" target="_blank"><b>Lägg in låntagare</b></a></p>
+<br />
+<p class="blockquote">För att lägga in en CD-skiva i databasen, måste Du först spara CD-skivans artist i databasen</p>
+<p class="bg-light blockquote"><a href="@Url.Action("Create", "CDs")" target="_blank"><b>Lägg in en CD-skiva</b></a></p>
+<p><hr /></p>
+<h4>Fyll i lånet</h4>
+<br/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BorrowerID" class="control-label"></label>
+                <label class="control-label text-danger"><b>@ViewBag.Message1</b></label>
+                <select asp-for="BorrowerID" class="form-control" asp-items="ViewBag.BorrowerID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CD_ID" class="control-label"></label>
+                <label class="control-label text-danger"><b>@ViewBag.Message2</b></label>
+                @if (Model != null)
+                {
+                    <select asp-for="CD_ID" class="form-control" asp-items="Model.CDList"></select>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="LoanDate" class="control-label"></label>
+                <input asp-for="LoanDate" class="form-control" readonly="readonly" />
+                <span asp-validation-for="LoanDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackDate" class="control-label"></label>
+                <input asp-for="BackDate" class="form-control" readonly="readonly" />
+                <span asp-validation-for="BackDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

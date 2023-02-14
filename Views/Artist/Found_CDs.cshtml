@@ -1,0 +1,50 @@
+﻿@model Uppgift3.Models.Artist
+
+<h4>CD-skivot för @Model.Name, @Model.Country</h4>
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Titel
+            </th>
+            <th>
+                Namn
+            </th>
+            <th>
+                Kategory
+            </th>
+            <th>
+                År
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model.Cds)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Artist.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td>
+                        <a asp-controller="CDs" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-controller="CDs" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-controller="CDs" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
